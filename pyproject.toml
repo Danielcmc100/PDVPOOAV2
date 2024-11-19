@@ -1,0 +1,44 @@
+[project]
+name = "pdv_poo_av2"
+version = "0.0.1"
+description = "An application for POS and inventory control with sales and customer management features."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "sqlalchemy>=2.0.36",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13.0",
+    "pytest-cov>=6.0.0",
+    "pytest>=8.3.3",
+    "ruff>=0.7.4",
+    "taskipy>=1.14.0",
+]
+
+[tool.mypy]
+exclude = "dist"
+
+[tool.ruff]
+line-length = 79
+# extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+preview = true
+select = ["ALL"]
+
+[tool.ruff.format]
+preview = true
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+lint = 'uv run ruff check .; uv run ruff check . --diff'
+format = 'uv run ruff check . --fix; uv run ruff format .'
+run = 'uv run pdv/main.py'
+pre_test = 'task lint'
+test = 'uv run pytest -s -x --cov=fast_api_zero -vv'
+post_test = 'uv run coverage html'
