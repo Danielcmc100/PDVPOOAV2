@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pygubu-designer>=0.39.3",
+    "pyright>=1.1.389",
     "sqlalchemy>=2.0.36",
 ]
 
@@ -22,6 +23,9 @@ dev = [
 exclude = "dist"
 # TODO stock line 33
 disable_error_code = ["call-arg"]
+
+[tool.pyright]
+strict = true
 
 
 [tool.ruff]
