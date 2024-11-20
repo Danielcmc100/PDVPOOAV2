@@ -20,7 +20,7 @@ def main() -> None:
             quantidade_estoque=10,
             preco=5.0,
             categoria="Bebida",
-            estoque_minimo=5
+            estoque_minimo=5,
         )
         create_produto(produto, session)
 

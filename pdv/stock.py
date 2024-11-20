@@ -23,11 +23,7 @@ def read_produto(cod_barras: int, session: Session) -> Produto | None:
     return session.query(Produto).filter_by(cod_barras=cod_barras).first()
 
 
-def update_produto(
-        cod_barras: int,
-        session: Session,
-        **kwargs: Any
-    ) -> None:
+def update_produto(cod_barras: int, session: Session, **kwargs: Any) -> None:
     """Atualiza um produto no banco de dados e confirma a transação."""
     produto = session.query(Produto).filter_by(cod_barras=cod_barras).first()
     for key, value in kwargs.items():

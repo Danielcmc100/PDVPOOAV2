@@ -21,11 +21,11 @@ def create_test_produto() -> Produto:
 
     """
     return Produto(
-    nome="Produto Teste",
-    preco=PRECO,
-    quantidade_estoque=10,
-    categoria="Categoria Teste",
-    estoque_minimo=5,
+        nome="Produto Teste",
+        preco=PRECO,
+        quantidade_estoque=10,
+        categoria="Categoria Teste",
+        estoque_minimo=5,
     )
 
 
