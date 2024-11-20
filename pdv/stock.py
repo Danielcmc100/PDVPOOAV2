@@ -1,78 +1,58 @@
 """Copyright (c) 2024."""
 
+from typing import Any
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import (
-    Mapped,
-    mapped_column,
-    registry,
-    sessionmaker,
-)
+from sqlalchemy.orm import Session
 
-engine = create_engine("sqlite:///stock.db")
-Session = sessionmaker(bind=engine)
-session = Session()
-reg = registry()
+from pdv.models import Produto, registro_tabela
 
 
-@reg.mapped_as_dataclass
-class Product:
-    """Product model."""
-
-    __tablename__ = "products"
-
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    name: Mapped[str]
-    quantity: Mapped[int]
-
-
-reg.metadata.create_all(engine)
-
-
-def create_product(name: str, quantity: int) -> None:
-    """Create stock."""
-    product = Product(name=name, quantity=quantity)
-    session.add(product)
+def create_produto(produto: Produto, session: Session) -> None:
+    """Adiciona um novo produto ao banco de dados e confirma a transação."""
+    session.add(produto)
     session.commit()
 
 
-def get_product(stock_id: int) -> Product | None:
-    """Get stock by id.
+def read_produto(cod_barras: int, session: Session) -> Produto | None:
+    """Retorna um produto do banco de dados.
 
     Returns:
-        Stock | None: Stock if found, None otherwise.
+        Produto: Retorna um produto do banco de dados.
 
     """
-    return session.query(Product).filter_by(id=stock_id).first()
+    return session.query(Produto).filter_by(cod_barras=cod_barras).first()
 
 
-def get_all_products() -> list[Product]:
-    """Get all stocks.
-
-    Returns:
-        list[Stock]: All stocks.
-
-    """
-    return session.query(Product).all()
-
-
-def update_product(
-    stock_id: int,
-    name: str | None = None,
-    quantity: int | None = None,
-) -> None:
-    """Update stock by id."""
-    stock = session.query(Product).filter_by(id=stock_id).first()
-    if stock:
-        if name:
-            stock.name = name
-        if quantity:
-            stock.quantity = quantity
-        session.commit()
+def update_produto(
+        cod_barras: int,
+        session: Session,
+        **kwargs: Any
+    ) -> None:
+    """Atualiza um produto no banco de dados e confirma a transação."""
+    produto = session.query(Produto).filter_by(cod_barras=cod_barras).first()
+    for key, value in kwargs.items():
+        setattr(produto, key, value)
+    session.commit()
 
 
-def delete_product(stock_id: int) -> None:
-    """Delete stock by id."""
-    stock = session.query(Product).filter_by(id=stock_id).first()
-    if stock:
-        session.delete(stock)
-        session.commit()
+def delete_produto(cod_barras: int, session: Session) -> None:
+    """Deleta um produto do banco de dados e confirma a transação."""
+    produto = session.query(Produto).filter_by(cod_barras=cod_barras).first()
+    session.delete(produto)
+    session.commit()
+
+
+if __name__ == "__main__":
+    engine = create_engine("sqlite:///stock.db")
+    registro_tabela.metadata.create_all(engine)
+
+    with Session(engine) as session:
+        produto = Produto(
+            nome="Café",
+            quantidade_estoque=10,
+            preco=5.0,
+            categoria="Bebida",
+            estoque_minimo=5
+        )
+        create_produto(produto, session)

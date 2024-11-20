@@ -12,3 +12,7 @@ wheels/
 stock.db
 
 pdv/ui
+
+.coverage
+
+.vscode

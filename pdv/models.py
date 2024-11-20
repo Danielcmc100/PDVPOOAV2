@@ -2,15 +2,20 @@
 
 from sqlalchemy.orm import Mapped, mapped_column, registry
 
-table_registry = registry()
+registro_tabela = registry()
 
 
-@table_registry.mapped_as_dataclass
-class Product:
-    """Product model."""
+@registro_tabela.mapped_as_dataclass
+class Produto:
+    """Modelo do produto."""
 
-    __tablename__ = "products"
+    __tablename__ = "productos"
 
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    name: Mapped[str] = mapped_column(unique=True)
-    quantity: Mapped[int]
+    cod_barras: Mapped[int] = mapped_column(init=False, primary_key=True)
+    nome: Mapped[str] = mapped_column(unique=True)
+    quantidade_estoque: Mapped[int]
+    preco: Mapped[float]
+    categoria: Mapped[str]
+    # TODO(Kleber): Mudar categoria para classe Categoria
+    # https://docs.astral.sh/ruff/rules/missing-todo-link/
+    estoque_minimo: Mapped[int]
