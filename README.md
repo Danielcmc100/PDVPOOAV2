@@ -23,7 +23,7 @@ This is a Python project project that incorporates the following tools for fast 
    
 2. **Run the application:**
    ```bash
-   uv run src/main.py
+   uv run pdv/main.py
    ```
 
 ## Making the Most of It
