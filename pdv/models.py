@@ -9,7 +9,7 @@ registro_tabela = registry()
 class Produto:
     """Modelo do produto."""
 
-    __tablename__ = "productos"
+    __tablename__ = "produtos"
 
     cod_barras: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str] = mapped_column(unique=True)
