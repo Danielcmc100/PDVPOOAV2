@@ -5,6 +5,8 @@ description = "An application for POS and inventory control with sales and custo
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pygubu-designer>=0.39.3",
+    "pyright>=1.1.389",
     "sqlalchemy>=2.0.36",
 ]
 
@@ -19,6 +21,12 @@ dev = [
 
 [tool.mypy]
 exclude = "dist"
+# TODO stock line 33
+disable_error_code = ["call-arg"]
+
+[tool.pyright]
+strict = true
+
 
 [tool.ruff]
 line-length = 79
@@ -27,6 +35,8 @@ line-length = 79
 [tool.ruff.lint]
 preview = true
 select = ["ALL"]
+ignore = ["S101", "D211", "D213", "COM812", "D203", "ISC001", "ANN401"]
+
 
 [tool.ruff.format]
 preview = true
@@ -40,5 +50,5 @@ lint = 'uv run ruff check .; uv run ruff check . --diff'
 format = 'uv run ruff check . --fix; uv run ruff format .'
 run = 'uv run pdv/main.py'
 pre_test = 'task lint'
-test = 'uv run pytest -s -x --cov=fast_api_zero -vv'
+test = 'uv run pytest -s -x --cov=pdv -vv'
 post_test = 'uv run coverage html'
