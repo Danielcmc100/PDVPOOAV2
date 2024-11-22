@@ -8,3 +8,13 @@ wheels/
 
 # Virtual environments
 .venv
+
+stock.db
+
+pdv/ui
+
+.coverage
+
+.vscode
+
+.mypy_cache
