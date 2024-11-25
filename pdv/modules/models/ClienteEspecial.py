@@ -1,5 +1,6 @@
 from modules.models.ClientesFiado import ClientesFiado
 
+
 class cliente_especial(ClientesFiado):
     def __init__(self, periodoPagamento: str):
         self.periodoPagamento = periodoPagamento

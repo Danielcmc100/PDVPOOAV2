@@ -1,5 +1,6 @@
 from modules.interfaces.estados_pdv import EstadoPDV
 
+
 class EstadoPedidoEmAndamento(EstadoPDV):
     def adicionar_produto(self, Produto, quantidade) -> None:
         print("Adicionando produto...")

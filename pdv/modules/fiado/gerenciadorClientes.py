@@ -1,5 +1,6 @@
 from modules.models.ClientesFiado import ClientesFiado
 
+
 class GerenciadorClientes:
     def __init__(self, clientes: [ClientesFiado]):
         self.clientes = clientes

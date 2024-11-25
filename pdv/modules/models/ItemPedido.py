@@ -1,7 +1,8 @@
 from Produto import Produto
 
+
 class ItemPedido:
-    def __init__(self, produto:Produto, quantidade:int):
+    def __init__(self, produto: Produto, quantidade: int):
         self.produto = produto
         self.quantidade = quantidade
 

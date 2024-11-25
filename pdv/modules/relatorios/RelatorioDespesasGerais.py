@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class RelatorioDespesasGerais:
-    def gerar(self, periodo:datetime.date):
+    def gerar(self, periodo: datetime.date):
         pass

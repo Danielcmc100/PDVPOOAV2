@@ -1,13 +1,16 @@
 from Categoria import Categoria
 
+
 class Produto:
-    def __init__(self,
-                 nome:str,
-                 preco:float,
-                 categoria:Categoria,
-                 cod_barras:str,
-                 quantidade_estoque:int,
-                 estoque_minimo:int):
+    def __init__(
+        self,
+        nome: str,
+        preco: float,
+        categoria: Categoria,
+        cod_barras: str,
+        quantidade_estoque: int,
+        estoque_minimo: int,
+    ):
         self.nome = nome
         self.preco = preco
         self.categoria = categoria

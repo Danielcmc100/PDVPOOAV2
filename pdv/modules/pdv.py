@@ -1,9 +1,15 @@
+from modules.autenticador.Autenticador import Autenticador
 from modules.interfaces.estados_pdv import EstadoPDV
 from modules.models.Pedido import Pedido
-from modules.autenticador.Autenticador import Autenticador
+
 
 class PDV:
-    def __init__(self, estado_atual: EstadoPDV, pedido_atual: Pedido, autenticador: Autenticador):
+    def __init__(
+        self,
+        estado_atual: EstadoPDV,
+        pedido_atual: Pedido,
+        autenticador: Autenticador,
+    ):
         self.estado_atual = estado_atual
 
     def set_estado(self, novo_estado: EstadoPDV):

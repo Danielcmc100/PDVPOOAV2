@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class EstadoPDV(ABC):
     @abstractmethod
     def iniciar_pedido(self) -> None:
