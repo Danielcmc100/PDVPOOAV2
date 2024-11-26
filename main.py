@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from pdv.models import Produto, registro_tabela
+from pdv.models import Categoria, Produto, registro_tabela
 from pdv.stock import create_produto
 
 """Módulo principal do projeto."""
@@ -15,11 +15,16 @@ def main() -> None:
     registro_tabela.metadata.create_all(engine)
 
     with Session(engine) as session:
+        categoria = Categoria(
+            nome="Alimentos",
+            descricao="Categoria de alimentos",
+        )
         produto = Produto(
             nome="Café",
             quantidade_estoque=10,
             preco=5.0,
-            categoria="Bebida",
+            categoria_id=1,
+            categoria=categoria,
             estoque_minimo=5,
         )
         create_produto(produto, session)
