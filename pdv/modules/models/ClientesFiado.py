@@ -1,7 +1,7 @@
 from Compra import Compra
 
 
-class ClientesFiado:
+class ClienteFiado:
     def __init__(
         self, nome: str, cpf: str, limite_de_credito: float, compras: [Compra]
     ):
