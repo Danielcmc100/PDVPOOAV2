@@ -18,3 +18,5 @@ pdv/ui
 .vscode
 
 .mypy_cache
+
+.env

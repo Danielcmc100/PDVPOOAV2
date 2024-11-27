@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.115.5",
+    "pydantic-settings>=2.6.1",
     "sqlalchemy>=2.0.36",
 ]
 
@@ -48,7 +49,7 @@ addopts = '-p no:warnings'
 [tool.taskipy.tasks]
 lint = 'uv run ruff check .; uv run ruff check . --diff'
 format = 'uv run ruff check . --fix; uv run ruff format .'
-run = 'uv run pdv/main.py'
+run = 'uv run fastapi dev pdv/app.py'
 pre_test = 'task lint'
 test = 'uv run pytest -s -x --cov=pdv -vv'
 post_test = 'uv run coverage html'

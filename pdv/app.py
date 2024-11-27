@@ -2,9 +2,14 @@
 
 from fastapi import FastAPI
 
+from pdv.routers import categorias
+
 """Módulo principal da aplicação."""
 
 app = FastAPI()
+
+
+app.include_router(categorias.router)
 
 
 @app.get("/")
