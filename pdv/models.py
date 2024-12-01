@@ -1,5 +1,7 @@
 """Copyright (c) 2024."""
 
+from datetime import datetime
+
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
 
@@ -43,3 +45,17 @@ class Fornecedor:
     nome: Mapped[str] = mapped_column(unique=True)
     cnpj: Mapped[str] = mapped_column(unique=True)
     telefone: Mapped[str]
+
+
+@registro_tabela.mapped_as_dataclass
+class Despesa:
+    """Modelo da despesa."""
+
+    __tablename__ = "despesas"
+
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    titulo: Mapped[str]
+    valor: Mapped[float]
+    tipo: Mapped[str]
+    data_vencimento: Mapped[datetime]
+    data_pagamento: Mapped[datetime]

@@ -1,4 +1,5 @@
 """Copyright (c) 2024."""
+from datetime import datetime
 
 from pydantic import BaseModel, Field, constr
 from pydantic_extra_types.phone_numbers import PhoneNumber
@@ -46,5 +47,21 @@ class FornecedorSchema(BaseModel):
 
 class PublicFornecedor(FornecedorSchema):
     """Esquema publico de dados para um fornecedor."""
+
+    id: int
+
+
+class DespesaSchema(BaseModel):
+    """Esquema de dados para uma despesa."""
+
+    titulo: str
+    valor: float
+    tipo: str
+    data_vencimento: datetime
+    data_pagamento: datetime
+
+
+class PublicDespesa(DespesaSchema):
+    """Esquema publico de dados para uma despesa."""
 
     id: int
