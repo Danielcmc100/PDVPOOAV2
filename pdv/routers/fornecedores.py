@@ -10,7 +10,7 @@ from pdv.database import get_session
 from pdv.models import Fornecedor
 from pdv.schemas import FornecedorSchema, PublicFornecedor
 
-router = APIRouter(prefix="/api/fornecedor", tags=["fornecedor"])
+router = APIRouter(prefix="/api/fornecedores", tags=["fornecedores"])
 Session = Annotated[Session, Depends(get_session)]
 
 

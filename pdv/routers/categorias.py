@@ -10,7 +10,7 @@ from pdv.database import get_session
 from pdv.models import Categoria
 from pdv.schemas import CategoriaSchema, PublicCategoria
 
-router = APIRouter(prefix="/api/categoria", tags=["categoria"])
+router = APIRouter(prefix="/api/categorias", tags=["categorias"])
 Session = Annotated[Session, Depends(get_session)]
 
 
