@@ -1,6 +1,6 @@
 """Copyright (c) 2024."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
@@ -59,3 +59,21 @@ class Despesa:
     tipo: Mapped[str]
     data_vencimento: Mapped[datetime]
     data_pagamento: Mapped[datetime]
+
+
+@registro_tabela.mapped_as_dataclass
+class Cliente:
+    """Modelo do cliente."""
+
+    __tablename__ = "clientes"
+
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    nome: Mapped[str]
+    cpf: Mapped[str]
+    telefone: Mapped[str]
+    email: Mapped[str]
+    endereco: Mapped[str]
+    data_nascimento: Mapped[datetime]
+    limite_de_credito: Mapped[float]
+    cliente_especial: Mapped[bool]
+    periodo_pagamento: Mapped[timedelta]

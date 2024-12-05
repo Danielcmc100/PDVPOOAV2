@@ -65,3 +65,22 @@ class PublicDespesa(DespesaSchema):
     """Esquema publico de dados para uma despesa."""
 
     id: int
+
+
+class ClienteSchema(BaseModel):
+    """Esquema de dados para um cliente."""
+
+    nome: str
+    cpf: str
+    telefone: PhoneNumber = Field(..., example="+1234567890")
+    email: str
+    endereco: str
+    data_nascimento: datetime
+    cliente_especial: bool
+    periodo_pagamento: str
+
+
+class PublicCliente(ClienteSchema):
+    """Esquema publico de dados para um cliente."""
+
+    id: int
