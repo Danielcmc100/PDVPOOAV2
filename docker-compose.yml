@@ -1,0 +1,13 @@
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./pdv:/app/pdv
+    environment:
+      - UV_COMPILE_BYTECODE=1
+      - UV_LINK_MODE=copy
+    command: /bin/sh -c "cd pdv && fastapi dev --host 0.0.0.0 --port 8000 app.py"
