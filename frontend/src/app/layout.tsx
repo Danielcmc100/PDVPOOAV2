@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${styles.base_body}`}>
-        <div className="container">
+        <div className="container-fluid p-0">
           {children}
         </div>
       </body>

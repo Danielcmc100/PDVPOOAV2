@@ -1,19 +1,12 @@
 import styles from './styles.module.scss'
+import HeaderNav from '@/components/HeaderNav';
+import LoginForm from '@/components/LoginForm';
 
 export default function Home() {
   return (
-    <div className="row">
-      <div className="col d-flex justify-content-center align-items-center" 
-        style={{
-        backgroundColor: "lightblue",
-        padding: "20px",
-        borderRadius: "5px",
-        textAlign: "center",
-      }}>
-        <div className={styles.myform}>
-          testes
-        </div>
-      </div>
-    </div>
+    <>
+      <HeaderNav />
+      <LoginForm />
+    </>
   );
 }
