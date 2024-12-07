@@ -1,103 +1,34 @@
-# Python Project
+# Projeto PDV
 
-This is a Python project project that incorporates the following tools for fast development and testing:
+Para rodar esse projeto em seu ambiente local, certifique-se queu você possui os seguintes softwares instalados em seu sistema:
 
-- **uv:** A modern, fast, and versatile Python package manager.
-- **Pytest:** A flexible testing framework.
-- **Ruff:** A powerful linter and code formatter.
-- **Mypy:** A static type checker for Python.
-- **GitHub Actions:** Automated linting and testing workflows.
+- Docker
+- Docker Compose
+- Node (versão 20 ou superior)
+- NPM
+- GIT
 
-## Getting Started
-1. **Install `uv`:**
+Tendo isso istalado, siga os passos abaixo:
 
-   Windows:
-   ```bash
-   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/installps1 | iex"
+1. Baixe o projeto no repositório
+2. Usando o programa de CLI (terminal) do seu siistema operacional, acesse o diretório onde o repositório foi baixado
+3. Rode o comando abaixo para montar o conteiner Docker
+```bash
+   docker compose build
    ```
-
-   MacOS and Linux
+   4. Rode o comando abaixo para colocar o conteiner no ar
    ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
+   docker compose up
+   ```
+   5. Feito isso, o servidor estará funcionando. Para interagir com o sistema, pelo terminal acesse o diretório /frontend
+   ```bash
+   cd frontend
+   ```
+   6. Agora rode o comando abaixo para iniciar o  frontend do projeto
+   ```bash
+   npm run dev
    ```
    
-2. **Run the application:**
-   ```bash
-   uv run pdv/main.py
-   ```
-
-## Making the Most of It
-
-### Using `uv`
-
-`uv` is a modern Python package manager that simplifies dependency management and environment setup, for more information on how to use uv while managing this project read: [Working with uv projects](https://docs.astral.sh/uv/guides/projects)
-
-1. **Install Dependencies:**
-   ```bash
-   uv install
-   ```
-
-2. **Add a New Dependency:**
-   ```bash
-   uv add <package-name>
-   ```
-
-3. **Remove a Dependency:**
-   ```bash
-   uv remove <package-name>
-   ```
-
-### Using `Ruff`
-
-`Ruff` is a powerful linter and code formatter that helps maintain code quality. It also has a Visual Studio Code extension for easier integration.
-
-1. **Lint the Code:**
-   ```bash
-   uv run ruff check .
-   ```
-
-2. **Automatically Fix Issues:**
-   ```bash
-   uv run ruff fix .
-   ```
-
-### Using `Pytest`
-
-`Pytest` is a flexible testing framework that makes it easy to write simple and scalable test cases.
-
-1. **Run All Tests:**
-   ```bash
-   uv run pytest
-   ```
-
-2. **Run Specific Tests:**
-   ```bash
-   uv run pytest path/to/test_file.py
-   ```
-
-3. **Generate a Test Report:**
-   ```bash
-   uv run pytest --html=report.html
-   ```
-
-### Using `Mypy`
-
-`Mypy` is a static type checker for Python that helps ensure your code is type-safe. It also has a Visual Studio Code extension for easier integration.
-
-1. **Check Types:**
-   ```bash
-   uv run mypy src/
-   ```
-
-2. **Check Specific File:**
-   ```bash
-   uv run mypy src/file.py
-   ```
-
-3. **Generate a Type Report:**
-   ```bash
-   uv run mypy --html-report report/ src/
-   ```
 
 
 # Instruções para entrega (necessário seguir à risca):
