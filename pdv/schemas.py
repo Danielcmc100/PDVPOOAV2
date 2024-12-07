@@ -84,3 +84,20 @@ class PublicCliente(ClienteSchema):
     """Esquema publico de dados para um cliente."""
 
     id: int
+
+
+class UsuarioSchema(BaseModel):
+    """Esquema de dados para um usuário."""
+
+    nome: str
+    email: str
+    senha: str
+    admin: bool
+
+
+class PublicUsuario(UsuarioSchema):
+    """Esquema publico de dados para um usuário."""
+
+    id: int
+    data_criacao: datetime
+    data_atualizacao: datetime

@@ -2,7 +2,14 @@
 
 from fastapi import FastAPI
 
-from pdv.routers import categorias, clientes, despesas, fornecedores, produtos
+from pdv.routers import (
+    categorias,
+    clientes,
+    despesas,
+    fornecedores,
+    produtos,
+    usuarios,
+)
 
 """Módulo principal da aplicação."""
 
@@ -14,6 +21,7 @@ app.include_router(produtos.router)
 app.include_router(fornecedores.router)
 app.include_router(despesas.router)
 app.include_router(clientes.router)
+app.include_router(usuarios.router)
 
 
 @app.get("/")

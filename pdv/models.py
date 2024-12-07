@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
 
 registro_tabela = registry()
@@ -77,3 +77,22 @@ class Cliente:
     limite_de_credito: Mapped[float]
     cliente_especial: Mapped[bool]
     periodo_pagamento: Mapped[timedelta]
+
+
+@registro_tabela.mapped_as_dataclass
+class Usuario:
+    """Modelo do usuário."""
+
+    __tablename__ = "usuarios"
+
+    id: Mapped[int] = mapped_column(init=False, primary_key=True)
+    nome: Mapped[str] = mapped_column(unique=True)
+    email: Mapped[str] = mapped_column(unique=True)
+    senha: Mapped[str]
+    admin: Mapped[bool]
+    data_criacao: Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now()
+    )
+    data_atualizacao:  Mapped[datetime] = mapped_column(
+        init=False, server_default=func.now(), onupdate=func.now()
+    )
